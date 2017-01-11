@@ -4,8 +4,9 @@ from email.mime.multipart import MIMEMultipart
 from email.mime.text import MIMEText
 from email.header import Header
 from email.utils import formataddr
+from config import BaseConfig
 
-
+ 
 recipients = ['jeffreiher@gmail.com', 'jeffreiher@bulletmail.org', "jreiher2003@yahoo.com", "web-26x2e@mail-tester.com"]
 for i in range(len(recipients)):
     try:
@@ -14,7 +15,6 @@ for i in range(len(recipients)):
         msg['Subject'] = "Signup for Dropbox"
         msg['From'] = formataddr((str(Header('Cloud Storage', 'utf-8')), 'email@asciichan-tripplannr.com'))
         msg["To"] = "".join(recipients[i])
-
         # Create the body of the message (a plain-text and an HTML version).
         text = "Hi!\nHow are you %s?\nHere is the dropbox link you wanted:\nhttps://db.tt/wW7clVpS" % recipients[i]
         html = """\
@@ -50,20 +50,18 @@ for i in range(len(recipients)):
         # Record the MIME types of both parts - text/plain and text/html.
         part1 = MIMEText(text, 'plain')
         part2 = MIMEText(html, 'html')
-
         # Attach parts into message container.
         # According to RFC 2046, the last part of a multipart message, in this case
         # the HTML message, is best and preferred.
         msg.attach(part1)
         msg.attach(part2)
 
-        s = smtplib.SMTP('mail.asciichan-tripplannr.com')
+        s = smtplib.SMTP(BaseConfig.MAIL_SERVER)
         s.starttls()
         s.ehlo()
         s.set_debuglevel(1)
 
         try:
-
             s.sendmail(sender, [recipients[i]], msg.as_string())
             time.sleep(5)
         finally:

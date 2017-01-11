@@ -1,0 +1,29 @@
+{% include "base.html" %}
+{% block content %}
+{% from "_macros.html" import render_field_with_errors, render_field %}
+<div class="container">
+    <div class="row">
+        <div class="col-md-8 col-md-offset-2">
+            <div class="border-css">
+                <h3>Please specify an email address that you would like removed.</h3>
+                <form class="form-inline" method="POST" action="">
+                     {{ form.csrf_token }}
+                    <div class="form-group">
+                      <label for="email">Email</label>
+                      {{ form.email(class="form-control", id="email", placeholder="Enter email") }}
+                        {% if form.email.errors %}
+                          <ul class="list-unstyled">
+                          {% for error in form.email.errors %}
+                            <li class="alert-danger">{{ error }}</li>
+                          {% endfor %}
+                          </ul>
+                        {% endif %}
+                    </div>
+                    <button type="submit" class="btn remove">Remove</button>
+                </form>
+        
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
