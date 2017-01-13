@@ -1,0 +1,18 @@
+{% extends "base.html" %}
+{% block content %}
+{% from "_macros.html" import render_field_with_errors, render_field %}
+<div class="container">
+    <div class="row">
+        <div class="col-md-8 col-md-offset-2">
+            <div class="border-css">
+                <h3>We are sorry to see you go.</h3>
+                <p><small>We are sorry you do not wish to continue receiving our emails. Please allow up to 10 days for this to be processed.</small></p>
+                <br>
+                {% include "messages.html" %}
+                <br>
+                <p><small>Please allow 2 weeks for this action to take effect</small></p>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

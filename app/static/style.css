@@ -1,0 +1,23 @@
+body {
+    background-color: #d8d8d8;
+}
+.border-css {
+    border: 2px solid #9c9393;
+    box-shadow: 1px solid #ddd;
+    background-color: #fff;
+    height: 450px;
+    padding: 20px;
+}
+button.btn.remove {
+    border-radius: 10%;
+    background-color: black;
+    color: white;
+}
+input {
+    width: 500px !important;
+}
+@media only screen and (max-width: 700px) {
+    input {
+        width: 200px !important;
+    }
+}

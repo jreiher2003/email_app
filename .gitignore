@@ -1,0 +1,5 @@
+*.pyc
+*.db
+venv/
+pic.JPG
+pic0.JPG 
