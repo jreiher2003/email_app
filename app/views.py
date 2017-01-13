@@ -36,7 +36,9 @@ def send_bulk():
         for i in range(len(users)):
             message = 'this is test message'
             subject = "hello, %s" % users[i]
-            msg = Message(recipients=[users[i]],
+            sender="email@asciichan-tripplannr.com"
+            msg = Message(sender=sender,
+                          recipients=[users[i]],
                           body=message,
                           subject=subject)
 
