@@ -1,3 +1,4 @@
+
 from app import app,db,mail
 from flask import render_template, flash, request, redirect, url_for
 from flask_mail import Message
@@ -12,3 +13,4 @@ with mail.connect() as conn:
                       subject=subject)
 
         conn.send(msg)
+
