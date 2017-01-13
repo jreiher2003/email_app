@@ -1,5 +1,6 @@
-from app import app
+from app import app,db,mail
 from flask import render_template, flash, request, redirect, url_for
+from flask_mail import Message
 from forms import EmailForm
 
 @app.route("/", methods=["GET", "POST"])
@@ -17,3 +18,14 @@ def index():
 def success():
     form = EmailForm()
     return render_template("success.html", form=form)
+
+@app.route("/send")
+def send_email():
+    msg = Message("Hello",
+                  sender="email@asciichan-tripplannr.com",
+                  recipients=["jeffreiher@gmail.com"])
+    msg.body = "testing"
+    msg.html = "<b>testing</b>"
+    mail.send(msg)
+    return "sent"
+
