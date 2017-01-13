@@ -35,8 +35,8 @@ def send_bulk():
     with mail.connect() as conn:
         for i in range(len(users)):
             message = 'this is test message'
-            subject = "hello, %s" % user[i]
-            msg = Message(recipients=[user[i]],
+            subject = "hello, %s" % users[i]
+            msg = Message(recipients=[users[i]],
                           body=message,
                           subject=subject)
 
