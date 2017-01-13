@@ -6,7 +6,7 @@ users = ["jeffreiher@gmail.com", "jeffreiher@bulletmail.org", "jreiher2003@yahoo
 with mail.connect() as conn:
     for i in range(len(users)):
         message = 'this is test message'
-        subject = "hello, %s" % user.name
+        subject = "hello, %s" % user[i]
         msg = Message(recipients=[user[i]],
                       body=message,
                       subject=subject)
