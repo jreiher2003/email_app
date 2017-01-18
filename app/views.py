@@ -77,4 +77,21 @@ def test_tem():
 def email_temp():
     return render_template("dropbox/dropbox_signup.html")
 
+def dropbox_send():
+    email_list1 = Export_32.query.all()
+    email_list = list(email_list1)
+    with mail.connect() as conn:
+        for e in email_list:
+            # print e.email
+            dropbox_url = "https://db.tt/wW7clVpS"
+            html = render_template("dropbox/dropbox_signup.html", dropbox_url=dropbox_url)
+            subject = "Free cloud storage"
+            send_email(e.email, subject, html)
+
+@app.route("/ascii-send")
+def drobox_sending_live():
+    dropbox_send()
+    return "send"
+
+
 
