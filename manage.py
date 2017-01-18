@@ -22,7 +22,7 @@ def create():
 
 @manager.command
 def create_dropbox_img():
-    Dropbox_Img.__table__.create(db.engine)
+    Dropbox_Img.__table__.drop(db.engine)
     Dropbox_Img.__table__.create(db.engine)
     banner = Dropbox_Img(bannerBlue="dropbox_blue.jpg",boxBlue="dropbox_glyph_blue.jpg")
     db.session.add(banner)
