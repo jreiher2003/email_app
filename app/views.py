@@ -8,11 +8,11 @@ from forms import EmailForm
 def index():
     error = None
     form = EmailForm()
-    email_list1 = Export_32.query.all()
-    email_list = list(email_list1)
-    for e in email_list:
-        print e.email
-    print len(email_list)
+    # email_list1 = Export_32.query.all()
+    # email_list = list(email_list1)
+    # for e in email_list:
+    #     print e.email
+    # print len(email_list)
     if form.validate_on_submit():
         email = form.email.data
         print email 
