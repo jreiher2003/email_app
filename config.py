@@ -7,8 +7,7 @@ class BaseConfig(object):
     MAIL_SERVER = os.environ["MAIL_SERVER"]
     SQLALCHEMY_DATABASE_URI = os.environ["SQLALCHEMY_DATABASE_URI"]
     SQLALCHEMY_BINDS = {'linkedin': os.environ["LINKEDIN_DATABASE_URL"],
-                        'myspace': os.environ["MYSPACE_DATABASE_URL"]
-                        }
+                        'myspace': os.environ["MYSPACE_DATABASE_URL"]}
 
 class DevelopmentConfig(BaseConfig):
     DEBUG = True
@@ -23,3 +22,4 @@ class DevelopmentConfig(BaseConfig):
 class ProductionConfig(BaseConfig):
     DEBUG = False
     UPLOADED_PHOTOS_DEST = "/var/www/email_app/email_app/app/static/img"
+    MAIL_DEFAULT_SENDER = '"Cloud Storage" <email@asciichan-tripplannr.com>'
