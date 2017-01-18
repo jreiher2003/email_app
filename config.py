@@ -10,7 +10,6 @@ class BaseConfig(object):
                         'myspace': os.environ["MYSPACE_DATABASE_URL"]
                         }
 
-
 class DevelopmentConfig(BaseConfig):
     DEBUG = True
     MAIL_USERNAME = os.environ["MAIL_USERNAME"]
@@ -23,3 +22,4 @@ class DevelopmentConfig(BaseConfig):
 
 class ProductionConfig(BaseConfig):
     DEBUG = False
+    UPLOADED_PHOTOS_DEST = "/var/www/email_app/email_app/app/static/img"
