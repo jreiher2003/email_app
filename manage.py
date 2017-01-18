@@ -2,7 +2,7 @@ import os
 from app import app,db 
 from flask_script import Manager, Server 
 from flask_migrate import Migrate, MigrateCommand
-from app.models import Dropbox_Img, Unsubscribe
+from app.models import Dropbox_Img, Unsubscribe, Export_32
 
 migrate = Migrate(app, db)
 manager = Manager(app)
@@ -28,6 +28,13 @@ def create_dropbox_img():
     db.session.add(banner)
     db.session.commit()
     print "db img created"
+
+@manager.command 
+def create_export_32():
+    Export_32.__table__.drop(db.engine)
+    Export_32.__table__.create(db.engine)
+    print "create export 32"
+
 
 @manager.command 
 def create_unsubscribe():
