@@ -6,8 +6,9 @@ class BaseConfig(object):
     SECRET_KEY = os.environ['SECRET_KEY']
     MAIL_SERVER = os.environ["MAIL_SERVER"]
     SQLALCHEMY_DATABASE_URI = os.environ["SQLALCHEMY_DATABASE_URI"]
-    SQLALCHEMY_BINDS = {'linkedin': 'postgresql://will:finn7797@localhost/linkedin',
-                        'myspace': 'postgresql://will:finn7797@localhost/myspace'}
+    SQLALCHEMY_BINDS = {'linkedin': os.environ["LINKEDIN_DATABASE_URL"],
+                        'myspace': os.environ["MYSPACE_DATABASE_URL"]
+                        }
 
 
 class DevelopmentConfig(BaseConfig):
@@ -18,6 +19,7 @@ class DevelopmentConfig(BaseConfig):
     MAIL_USE_TLS = False
     MAIL_USE_SSL = True
     MAIL_PORT = 465
+    UPLOADED_PHOTOS_DEST = "/vagrant/app/static/img"
 
 class ProductionConfig(BaseConfig):
     DEBUG = False

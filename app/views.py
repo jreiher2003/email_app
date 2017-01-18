@@ -1,7 +1,7 @@
 from app import app,db,mail
 from flask import render_template, flash, request, redirect, url_for
 from flask_mail import Message
-from models import Export_32
+from models import Export_32, Dropbox_Img
 from forms import EmailForm
 
 @app.route("/", methods=["GET", "POST"])
@@ -75,6 +75,9 @@ def test_tem():
 
 @app.route("/email_temp")
 def email_temp():
-    return render_template("dropbox/dropbox_signup.html")
+    b = Dropbox_Img.query.filter_by(bannerBlue="dropbox_blue.jpg").one()
+    c = Dropbox_Img.query.filter_by(boxBlue="dropbox_glyph_blue.jpg").one()
+    print b,c
+    return render_template("dropbox/dropbox_signup.html", b=b, c=c)
 
 
