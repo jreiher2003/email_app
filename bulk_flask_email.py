@@ -19,9 +19,10 @@ def send_bulk():
     email_list_50k = db.session.query(Export).offset(50001).limit(50000)
     email_list_50_100k = db.session.query(Export).offset(100001).limit(50000)
     email_list_100_150k = db.session.query(Export).offset(150001)
+    email_list_180_188k = db.session.query(Export).offset(180001).limit(500)
     with app.app_context():
         with mail.connect() as conn:
-            for i in email_list:
+            for i in email_list_180_188k:
                 dropbox_url = "https://db.tt/wW7clVpS"
                 html = render_template("dropbox/dropbox_signup.html", dropbox_url=dropbox_url)
                 subject = "Free cloud storage"
@@ -40,7 +41,6 @@ if __name__ == "__main__":
     print "###########################################"
     import time
     start = time.time()
-    time.sleep(60)
     send_bulk()
     end = time.time()
     time = (end-start)
