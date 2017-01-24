@@ -37,5 +37,15 @@ def test_query():
         
 
 if __name__ == "__main__":
+    print "###########################################"
+    import time
+    start = time.time()
+    time.sleep(60)
     send_bulk()
+    end = time.time()
+    time = (end-start)
+    print "it took ", time, " in seconds " , time/60, "in minutes"
+    print "all sent"
+    print "###########################################"
+
     # test_query()
