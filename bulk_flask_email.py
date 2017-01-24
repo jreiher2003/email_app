@@ -19,7 +19,7 @@ def send_bulk():
     email_list_50k = db.session.query(Export).offset(50001).limit(50000)
     email_list_50_100k = db.session.query(Export).offset(100001).limit(50000)
     email_list_100_150k = db.session.query(Export).offset(150001)
-    email_list_180_188k = db.session.query(Export).offset(180001).limit(500)
+    email_list_180_188k = db.session.query(Export).offset(180501).limit(5000)
     with app.app_context():
         with mail.connect() as conn:
             for i in email_list_180_188k:
