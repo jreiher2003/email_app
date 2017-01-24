@@ -1,18 +1,13 @@
 from app import app,db,mail
 from flask import render_template, flash, request, redirect, url_for
 from flask_mail import Message
-from models import Export_32
+from models import Export
 from forms import EmailForm
 
 @app.route("/", methods=["GET", "POST"])
 def index():
     error = None
     form = EmailForm()
-    # email_list1 = Export_32.query.all()
-    # email_list = list(email_list1)
-    # for e in email_list:
-    #     print e.email
-    # print len(email_list)
     if form.validate_on_submit():
         email = form.email.data
         print email 
@@ -77,8 +72,11 @@ def test_tem():
 def email_temp():
     return render_template("dropbox/dropbox_signup.html")
 
+###############################################################
+###############################################################
+
 def dropbox_send():
-    email_list1 = Export_32.query.all()
+    email_list1 = Export.query.all()
     email_list = list(email_list1)
     with mail.connect() as conn:
         for e in email_list:

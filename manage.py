@@ -2,7 +2,7 @@ import os
 from app import app,db 
 from flask_script import Manager, Server 
 from flask_migrate import Migrate, MigrateCommand
-from app.models import Unsubscribe, Export_32
+from app.models import Unsubscribe
 app.config.from_object(os.environ['APP_SETTINGS'])
 migrate = Migrate(app, db)
 manager = Manager(app)
@@ -24,7 +24,6 @@ def create():
 def create_unsubscribe():
     Unsubscribe.__table__.create(db.engine)
     print "create unsubscribe"
-
 
 if __name__ == "__main__":
     manager.run()

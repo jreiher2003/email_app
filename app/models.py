@@ -7,9 +7,9 @@ class Unsubscribe(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     email = db.Column(db.String)
 
-class Export_32(db.Model):
+class Export(db.Model):
     __bind_key__ = "linkedin"
-    __tablename__ = 'export_32'
-
-    # id = db.Column(db.Integer, primary_key=True)
+    __tablename__ = 'export'
     email = db.Column(db.String, primary_key=True)
+
+
