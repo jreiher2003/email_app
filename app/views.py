@@ -20,6 +20,9 @@ def success():
     form = EmailForm()
     return render_template("success.html", form=form)
 
+######################################################################
+######################################################################
+
 @app.route("/send")
 def send_email():
     msg = Message("Hello", recipients=["jeffreiher@gmail.com"])
@@ -75,21 +78,21 @@ def email_temp():
 ###############################################################
 ###############################################################
 
-def dropbox_send():
-    email_list1 = Export.query.all()
-    email_list = list(email_list1)
-    with mail.connect() as conn:
-        for e in email_list:
-            # print e.email
-            dropbox_url = "https://db.tt/wW7clVpS"
-            html = render_template("dropbox/dropbox_signup.html", dropbox_url=dropbox_url)
-            subject = "Free cloud storage"
-            send_email(e.email, subject, html)
+# def dropbox_send():
+#     email_list1 = Export.query.all()
+#     email_list = list(email_list1)
+#     with mail.connect() as conn:
+#         for e in email_list:
+#             # print e.email
+#             dropbox_url = "https://db.tt/wW7clVpS"
+#             html = render_template("dropbox/dropbox_signup.html", dropbox_url=dropbox_url)
+#             subject = "Free cloud storage"
+#             send_email(e.email, subject, html)
 
-@app.route("/ascii-send")
-def drobox_sending_live():
-    dropbox_send()
-    return "send"
+# @app.route("/ascii-send")
+# def drobox_sending_live():
+#     dropbox_send()
+#     return "send"
 
 
 
