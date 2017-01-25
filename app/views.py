@@ -39,11 +39,11 @@ def send_bulk():
         for i in range(len(users)):
             message = 'this is test message'
             subject = "hello, %s" % users[i]
-            # sender="email@asciichan-tripplannr.com"
+            sender='"Cloud Storage" <email@asciichan-tripplannr.com>'
             msg = Message(recipients=[users[i]],
                           body=message,
-                          subject=subject)
-
+                          subject=subject,
+                          sender=sender)
             conn.send(msg)
         return "sent"
 
@@ -52,7 +52,7 @@ def send_email(to, subject, template):
         subject,
         recipients=[to],
         html=template,
-        sender=app.config['MAIL_DEFAULT_SENDER']
+        sender='"Cloud Storage" <email@asciichan-tripplannr.com>'
     )
     mail.send(msg)
 

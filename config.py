@@ -7,20 +7,23 @@ class BaseConfig(object):
     SQLALCHEMY_DATABASE_URI = os.environ["SQLALCHEMY_DATABASE_URI"]
     SQLALCHEMY_BINDS = {'linkedin': os.environ["LINKEDIN_DATABASE_URL"],
                         'myspace': os.environ["MYSPACE_DATABASE_URL"]}
+    MAIL_SERVER = os.environ["MAIL_SERVER"]
+    MAIL_MAX_EMAILS = 1000
+
 
 class DevelopmentConfig(BaseConfig):
     DEBUG = True
-    # MAIL_SERVER = os.environ["MAIL_SERVER"]
-    # MAIL_USERNAME = os.environ["MAIL_USERNAME"]
-    # MAIL_PASSWORD = os.environ["MAIL_PASSWORD"]
+    MAIL_USERNAME = os.environ["MAIL_USERNAME"]
+    MAIL_PASSWORD = os.environ["MAIL_PASSWORD"]
     # MAIL_DEFAULT_SENDER = '"Cloud Storage" <asciichan.tripplannr.com@gmail.com>'
-    # MAIL_USE_TLS = False
-    # MAIL_USE_SSL = True
-    # MAIL_PORT = 465
+    MAIL_USE_TLS = False
+    MAIL_USE_SSL = True
+    MAIL_PORT = 465
+    MAIL_SUPPRESS_SEND = True
     UPLOADED_PHOTOS_DEST = "/vagrant/app/static/img"
 
 class ProductionConfig(BaseConfig):
     DEBUG = False
     UPLOADED_PHOTOS_DEST = "/var/www/email_app/email_app/app/static/img"
-    MAIL_SERVER = os.environ["MAIL_SERVER"]
-    MAIL_DEFAULT_SENDER = '"Cloud Storage" <email@asciichan-tripplannr.com>'
+    # MAIL_SERVER = os.environ["MAIL_SERVER"]
+    # MAIL_DEFAULT_SENDER = '"Cloud Storage" <email@asciichan-tripplannr.com>'
