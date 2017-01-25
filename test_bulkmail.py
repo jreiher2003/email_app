@@ -19,16 +19,15 @@ def test_mail(offset):
     with app.app_context():
         with mail.record_messages() as outbox:
             for i in emails:
-                dropbox_url = "https://db.tt/wW7clVpS"
-                html = render_template("dropbox/dropbox_signup.html", dropbox_url=dropbox_url)
-                subject = "Free cloud storage"
+                html = render_template("gwages/dreams/dreams_catch_star.html", email=i)
+                subject = "Play Casino Games Free Play $25"
                 send_email(i, subject, html)
 
             assert len(outbox) == 1000
-            assert outbox[0].subject == "Free cloud storage"
-
+            assert outbox[0].subject == "Play Casino Games Free Play $25"
+# 46000
 def gen_list():
-    return list(range(0,20000,1000))
+    return list(range(176000,190000,1000))
 
 if __name__ == "__main__":
     print "###########################################"

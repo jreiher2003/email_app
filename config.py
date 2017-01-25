@@ -12,14 +12,14 @@ class BaseConfig(object):
 
 
 class DevelopmentConfig(BaseConfig):
-    DEBUG = True
+    # DEBUG = True
     # MAIL_USERNAME = os.environ["MAIL_USERNAME"]
     # MAIL_PASSWORD = os.environ["MAIL_PASSWORD"]
     # # MAIL_DEFAULT_SENDER = '"Cloud Storage" <asciichan.tripplannr.com@gmail.com>'
     # MAIL_USE_TLS = False
     # MAIL_USE_SSL = True
     # MAIL_PORT = 465
-    # MAIL_SUPPRESS_SEND = True
+    # # MAIL_SUPPRESS_SEND = True
     UPLOADED_PHOTOS_DEST = "/vagrant/app/static/img"
 
 class ProductionConfig(BaseConfig):

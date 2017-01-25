@@ -8,25 +8,25 @@ def send_email(to, subject, template):
         subject,
         recipients=[to],
         html=template,
-        sender='"Cloud Storage" <email@asciichan-tripplannr.com>'
+        sender='"Dreams Casino" <email@asciichan-tripplannr.com>'
     )
     mail.send(msg)
 
-# users = ["jeffreiher@gmail.com", "jeffreiher@bulletmail.org", "jreiher2003@yahoo.com"]
+# emails = ["jeffreiher@gmail.com", "jeffreiher@bulletmail.org", "jreiher2003@yahoo.com"]
 def send_bulk(offset):
     email_list = db.session.query(Export).offset(offset).limit(1000)
-    lst = [e.email for e in email_list]
-    print len(lst)
+    emails = [e.email for e in email_list]
+    print len(emails)
     with app.app_context():
         with mail.connect() as conn:
-            for i in email_list:
-                dropbox_url = "https://db.tt/wW7clVpS"
-                html = render_template("dropbox/dropbox_signup.html", dropbox_url=dropbox_url)
-                subject = "Free cloud storage"
-                send_email(i.email, subject, html)
+            for i in emails:
+                
+                html = render_template("gwages/dreams/dreams_catch_star.html", email=i)
+                subject = "Play Casino Games Free Play $25"
+                send_email(i, subject, html)
 
 def gen_list():
-    return list(range(5000,50000,1000))
+    return list(range(46000,190000,1000))
         
 
 if __name__ == "__main__":
