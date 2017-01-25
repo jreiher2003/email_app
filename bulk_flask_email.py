@@ -24,7 +24,7 @@ def send_bulk(offset):
                 send_email(i.email, subject, html)
 
 def gen_list():
-    return list(range(1000,5000,1000))
+    return list(range(5000,50000,1000))
         
 
 if __name__ == "__main__":
