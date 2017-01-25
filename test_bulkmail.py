@@ -15,7 +15,7 @@ def send_email(to, subject, template):
 def test_mail(offset):
     email_list = db.session.query(Export).offset(offset).limit(1000)
     emails = [e.email for e in email_list]
-    print len(emails)
+    print "length of emails ", len(emails)
     with app.app_context():
         with mail.record_messages() as outbox:
             for i in emails:
@@ -27,5 +27,20 @@ def test_mail(offset):
             assert len(outbox) == 1000
             assert outbox[0].subject == "Free cloud storage"
 
+def gen_list():
+    return list(range(0,20000,1000))
+
 if __name__ == "__main__":
-    test_mail(0)
+    print "###########################################"
+    offset_list = gen_list()
+    for i in offset_list:
+        print "number in list ", i
+        import time
+        start = time.time()
+        test_mail(i)
+        end = time.time()
+        tt = (end-start)
+        print "it took ", tt, " in seconds " , tt/60, "in minutes"
+        print "all sent"
+        time.sleep(2)
+        print "###########################################"
