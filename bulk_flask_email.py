@@ -15,6 +15,8 @@ def send_email(to, subject, template):
 # users = ["jeffreiher@gmail.com", "jeffreiher@bulletmail.org", "jreiher2003@yahoo.com"]
 def send_bulk(offset):
     email_list = db.session.query(Export).offset(offset).limit(1000)
+    lst = [e.email for e in email_list]
+    print len(lst)
     with app.app_context():
         with mail.connect() as conn:
             for i in email_list:
