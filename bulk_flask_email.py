@@ -26,7 +26,11 @@ def send_bulk(offset):
                 send_email(i, subject, html)
 
 def gen_list():
-    return list(range(46000,190000,1000))
+    """ this will give you the offset variable in send bulk and step by 1000 
+    email_list = db.session.query(Export).offset(46000).limit(1000)
+
+    """
+    return list(range(14000,190000,1000))
         
 
 if __name__ == "__main__":
