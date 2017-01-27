@@ -31,7 +31,7 @@ def gen_list():
     email_list = db.session.query(Export).offset(46000).limit(1000)
 
     """
-    return list(range(10700,320300,100))
+    return list(range(25100,320300,100))
         
 
 if __name__ == "__main__":
