@@ -13,8 +13,9 @@ def send_email(to, subject, template):
     mail.send(msg)
 
 def test_mail(offset):
-    email_list = db.session.query(Export).offset(offset).limit(1000)
+    email_list = db.session.query(Export).offset(offset).limit(100)
     emails = [e.email for e in email_list]
+    print emails
     print "length of emails ", len(emails)
     with app.app_context():
         with mail.record_messages() as outbox:
@@ -23,11 +24,11 @@ def test_mail(offset):
                 subject = "Play Casino Games Free Play $25"
                 send_email(i, subject, html)
 
-            assert len(outbox) == 1000
+            assert len(outbox) == 100
             assert outbox[0].subject == "Play Casino Games Free Play $25"
 # 46000
 def gen_list():
-    return list(range(176000,190000,1000))
+    return list(range(0,320300,100))
 
 if __name__ == "__main__":
     print "###########################################"
