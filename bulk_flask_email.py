@@ -26,17 +26,20 @@ def send_bulk(offset):
                 subject = "Play Casino Games Free Play $25"
                 send_email(i, subject, html)
 
-def gen_list():
+def gen_list(start,stop,step):
     """ this will give you the offset variable in send bulk and step by 1000 
     email_list = db.session.query(Export).offset(46000).limit(1000)
 
     """
-    return list(range(25100,320300,100))
+    return list(range(start,stop,step))
         
 
 if __name__ == "__main__":
     print "###########################################"
-    offset_list = gen_list()
+    start = int(raw_input("Enter what row to start on: "))
+    stop = int(raw_input("Enter what row to stop on: "))
+    step = int(raw_input("Enter how many to send at once...step: "))
+    offset_list = gen_list(start,stop,step)
     for i in offset_list:
         print "number in list ", i
         import time
