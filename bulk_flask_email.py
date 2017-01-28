@@ -1,3 +1,4 @@
+import time
 from app import app,db,mail
 from flask import render_template, flash, request, redirect, url_for
 from app.models import Export 
@@ -21,10 +22,10 @@ def send_bulk(offset):
     with app.app_context():
         with mail.connect() as conn:
             for i in emails:
-                
                 html = render_template("gwages/dreams/dreams_catch_star.html", email=i)
                 subject = "Play Casino Games Free Play $25"
                 send_email(i, subject, html)
+                time.sleep(1)
 
 def gen_list(start,stop,step):
     """ this will give you the offset variable in send bulk and step by 1000 
@@ -42,7 +43,6 @@ if __name__ == "__main__":
     offset_list = gen_list(start,stop,step)
     for i in offset_list:
         print "number in list ", i
-        import time
         start = time.time()
         send_bulk(i)
         end = time.time()
